@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EyesOnRails</string>
+    <string name="Error">Error Loading Page</string>
+</resources>
