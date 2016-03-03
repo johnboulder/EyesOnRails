@@ -3,6 +3,10 @@ package com.wherethismove.eyesonrails;
 /**
  * Created by stockweezie on 3/2/2016.
  */
+
+/**
+ * Pretty straight forward class used for representing Issues used in the listView
+ */
 public class IssueListItem
 {
     private String mId; // id

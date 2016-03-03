@@ -29,22 +29,28 @@ public class GetPageJsonTask extends AsyncTask<String, Void, String>
         mFragmentCallBack = fragment;
     }
 
+    /**
+     * Method that pulls the text from the given URL, turns it into a string, and then parses it
+     * into a JSONArray. And returns it by calling the mFragmentCallBack.callback() method.
+     */
     @Override
     protected String doInBackground(String... params)
     {
+        // Get the URL from the parameters
         String url = params[0];
         String charset = "UTF-8";
         String response = "";
 
         try
         {
+            // Connect to the url
             URLConnection c = new URL(url).openConnection();
             c.setRequestProperty("Accept-Charset", charset);
+            // Get the data
             InputStream res = c.getInputStream();
-
+            // Translate it to a string
             BufferedReader bReader = new BufferedReader(new InputStreamReader(res, "utf-8"), 8);
             StringBuilder sBuilder = new StringBuilder();
-
             String line;
             while ((line = bReader.readLine()) != null) {
                 sBuilder.append(line + "\n");
@@ -66,7 +72,9 @@ public class GetPageJsonTask extends AsyncTask<String, Void, String>
     @Override
     protected void onProgressUpdate(Void... values)
     {
-
+        // Didn't bother doing this because UI didn't matter much.
+        // All it would take is adding another callback which cascades to a callback
+        // in the MainActivity which displays a ProgressBar
     }
 
     @Override
@@ -75,7 +83,7 @@ public class GetPageJsonTask extends AsyncTask<String, Void, String>
         super.onPostExecute(result);
         if(result != null)
         {
-            // Process it into a json and return it
+            // Process it into a jsonArray and return it
             try
             {
                 JSONArray jArray = new JSONArray(result);
@@ -93,6 +101,7 @@ public class GetPageJsonTask extends AsyncTask<String, Void, String>
         }
     }
 
+    // Callback for classes to implement when they call this function
     public interface GetPageDataCallback
     {
         void callback(JSONArray pageData);

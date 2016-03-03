@@ -17,12 +17,12 @@ import java.util.List;
 
 /**
  * <p>
- * A fragment representing a list of Items.
+ * A fragment representing a list of issues from the ruby on rails repository.
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  *
- * NOTE, most everything in this class is default generated until you get to the populate list
+ * NOTE, most everything in this class is default generated until you get to the populateList function
  */
 public class IssueFragment extends Fragment
 {
